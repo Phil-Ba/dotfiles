@@ -22,7 +22,8 @@ background = #222
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
-foreground-alt = #555
+foreground-alt = #a0a0a0
+#foreground-alt = #555
 primary = #339999
 secondary = #e60053
 alert = #bd2c40
@@ -42,12 +43,12 @@ label-empty-foreground = ${colors.foreground-alt}
 
 [bar/main]
 #override-redirect = true
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 27
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 6.0
+radius = 0.0
 fixed-center = false
 
 background = ${colors.background}
@@ -67,18 +68,19 @@ module-margin-right = 2
 
 #font-0 = fixed:pixelsize=10;1
 font-0 = DejaVuSans
-font-2 = Font Awesome 5 Free:style=Solid
-font-3 = Font Awesome 5 Free:style=Regular
-font-4 = Font Awesome 5 Brands:style=Regular
-font-5 = Font Awesome 5 Brands
+#font-0 = Hack Nerd Font:style=Regular
+font-1 = Font Awesome 5 Free:style=Solid
+font-2 = Font Awesome 5 Free:style=Regular
+font-3 = Font Awesome 5 Brands:style=Regular
+font-4 = Font Awesome 5 Brands
 #font-1 = Font Awesome 5 Free Solid:style=Solid:pixelsize=10;1
 #font-2 = Font Awesome 5 Free Regular:style=Regular;1
 #font-3 = Font Awesome 5 Brands Regular:style=Regular;1
 #font-4 = Font Awesome 5 Brands:pixelsize=10
 #font-5 = Iosevka Nerd Font:style=Medium:size=16;3
-font-6 = Material Icons
-font-7 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-1 =  Wuncon Siji:style:Regular
+font-5 = Material Icons
+font-6 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-7 = Siji:style:Regular
 
 modules-left = i3
 #modules-left = bspwm i3
@@ -148,34 +150,41 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
+#mformat = <label-state>
 index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
+#pin-workspaces = true
+label-mode = %mode%
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 #focused = %index%
-label-focused-background = ${colors.label-focused-background}
+label-focused-background = ${colors.primary}
 label-focused-underline = ${colors.label-focused-underline}
 label-focused-padding = 2
 
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
 ; unfocused = Inactive workspace on any monitor
-#label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %name%
 label-visible-background = ${colors.label-focused-background}
 label-visible-underline = ${colors.label-focused-underline}
 label-visible-padding = 2
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %name%
 label-urgent-background = ${colors.label-urgent-background}
 label-urgent-padding = 2g
 
