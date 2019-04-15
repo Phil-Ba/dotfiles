@@ -12,6 +12,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 # multiple monitors
 for monitor in $(polybar --list-monitors | cut -d ":" -f 1); do
   # Launch bar1 and bar2
+  # echo "Launching " + $monitor
   MONITOR=$monitor polybar --reload --config=$HOME/.config/polybar/config main &
 #  MONITOR=$monitor polybar --reload --config=$HOME/.config/polybar/config bottom &
 

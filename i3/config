@@ -99,9 +99,9 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1 Browser "
-set $ws2 "2 Code "
-set $ws3 "3 Editor "
+set $ws1 "1: Browser "
+set $ws2 "2: Code "
+set $ws3 "3: Editor "
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
@@ -222,7 +222,7 @@ exec --no-startup-id start_conky_maia
 exec --no-startup-id xautolock -time 20 -locker $Locker 
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id ~/.config/polybar/launch.sh
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 #bar {
 #	i3bar_command i3bar
@@ -257,13 +257,14 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
 #  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused          #339999 #339999 #80FFF9 #FDF6E3
+  client.focused          #1c5959 #339999 #80FFF9 #FDF6E3
   client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  client.unfocused        #1e2f38 #2F3D44 #1ABC9C #454948
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000
 
   client.background       #2B2C2B
+
 # Set inner/outer gaps
 gaps inner 14 
 gaps outer -2
@@ -378,8 +379,9 @@ for_window [urgent=latest] focus
 bindsym $mod+shift+m mode "$mode_monitor"
 set $mode_monitor work (w), laptop (l)
 mode "$mode_monitor" {
-    bindsym w exec --no-startup-id $HOME/.config/.screenlayout/work-3-monitors.sh; workspace $ws2 move workspace to output DVI-I-2-1, workspace $ws1 move workspace to output DVI-I-3-2, mode "default"
-    bindsym l exec --no-startup-id $HOME/.config/.screenlayout/laptop-only.sh, mode "default"
+    bindsym w exec --no-startup-id $HOME/.config/.screenlayout/work-3-monitors.sh; mode "default"
+#    bindsym w exec --no-startup-id $HOME/.config/.screenlayout/work-3-monitors.sh; workspace $ws2 move workspace to output DVI-I-2-1, workspace $ws1 move workspace to output DVI-I-3-2, mode "default"
+    bindsym l exec --no-startup-id $HOME/.config/.screenlayout/laptop-only.sh; mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
