@@ -88,7 +88,7 @@ modules-center = mpd
 modules-right = filesystem xbacklight alsa xkeyboard memory cpu wlan eth battery date powermenu
 #modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
-tray-position = right
+tray-position = ${env:POLYBAR_TRAY:none}
 tray-padding = 2
 ;tray-background = #0063ff
 

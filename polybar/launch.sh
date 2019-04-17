@@ -10,11 +10,20 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 #polybar -c ~/.config/polybar/config main &
 # Solution from https://github.com/jaagr/polybar/issues/763 to polybar in
 # multiple monitors
-for monitor in $(polybar --list-monitors | cut -d ":" -f 1); do
-  # Launch bar1 and bar2
-  # echo "Launching " + $monitor
-  MONITOR=$monitor polybar --reload --config=$HOME/.config/polybar/config main &
-#  MONITOR=$monitor polybar --reload --config=$HOME/.config/polybar/config bottom &
+
+xrandr -q | grep " connected" | while read monitor; do
+   echo "Launching " + $monitor
+  if [[ $monitor == *"primary"* ]]
+  then 
+    tray_position=right
+  else
+    tray_position=none
+  fi
+  echo "tray="$tray_position
+  echo "moni1="$monitor
+  monitor=$(echo "$monitor" | cut -d ' ' -f1)
+  echo "moni2="$monitor
+  MONITOR=$monitor POLYBAR_TRAY=$tray_position polybar --reload --config=$HOME/.config/polybar/config main &
 
 done
 
