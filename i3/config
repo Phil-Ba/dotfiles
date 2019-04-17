@@ -222,7 +222,7 @@ exec --no-startup-id start_conky_maia
 exec --no-startup-id xautolock -time 20 -locker $Locker 
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 #bar {
 #	i3bar_command i3bar
@@ -258,7 +258,7 @@ exec --no-startup-id ~/.config/polybar/launch.sh
 # class                   border  backgr. text    indic.   child_border
 #  client.focused          #556064 #556064 #80FFF9 #FDF6E3
   client.focused          #1c5959 #339999 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+  client.focused_inactive #2F3D44 #287676 #1ABC9C #454948
   client.unfocused        #1e2f38 #2F3D44 #1ABC9C #454948
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000
